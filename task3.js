@@ -1,22 +1,31 @@
 //3. Buatlah program yang memiliki satu variabel dengan nama “printSegitiga”
 //   yg berisi tipe data number yang menghasilkan output segitiga terbalik yang berisi angka
 
-const printSegitiga = 6;
-
-const print = (printSegitiga) => {
+const validasi = (printSegitiga) => {
+  //error handling
   try {
-    if (typeof printSegitiga === 'number') {
-      for (let i = printSegitiga; i >= 1; i--) {
-        let num = '';
-        for (let j = 1; j <= i; j++) {
-          num += j + ' ';
-        }
-        console.log(num);
-      }
-    }
-  } catch (error) {
-    console.log(`Pastikan Inputan Data harus number ${error}`);
+    if (printSegitiga === '') throw 'null';
+    if (isNaN(printSegitiga) || typeof printSegitiga === 'boolean') throw ' inputan validasi bukan angka';
+    printSegitiga = Number(printSegitiga);
+  } catch (err) {
+    console.log(err);
   }
 };
 
-print(printSegitiga);
+const print = (printSegitiga) => {
+  validasi(printSegitiga);
+  if (printSegitiga === true) {
+    num = 0;
+  }
+  //Looping//
+  let num = '';
+  for (let i = printSegitiga; i >= 1; i--) {
+    for (let j = 1; j <= i; j++) {
+      num += j + ' ';
+    }
+    num += '\n';
+  }
+  return num;
+};
+//print inputan
+console.log(print(6));
