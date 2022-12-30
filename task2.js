@@ -8,37 +8,39 @@
 //    60 - 69 = D
 //    0 - 59 = E
 
-const mtk = 60;
-const BahasaIndonesia = 90;
-const BahasaInggris = 89;
-const ipa = 69;
+function nilai(hitung) {
+  switch (true) {
+    case hitung >= 0 && hitung <= 59:
+      return 'E';
+    case hitung >= 60 && hitung <= 69:
+      return 'D';
+    case hitung >= 70 && hitung <= 79:
+      return 'C';
+    case hitung >= 80 && hitung <= 89:
+      return 'B';
+    case hitung >= 90 && hitung <= 100:
+      return 'A';
+    case hitung >= 100 && hitung <= 500:
+      return 'A+';
+    default:
+      return 'anda wajib mengulang';
+  }
+}
 
-let total = mtk + BahasaIndonesia + BahasaInggris + ipa;
-let hitung = total / 4;
-let test = true;
+const mtk = 10;
+const bahasaIndonesia = 100;
+const bahasaInggris = 90;
+const ipa = 70;
+
+const jumlah = mtk + bahasaIndonesia + bahasaInggris + ipa;
+const NilaiRataRata = jumlah / 4;
+const hasil = nilai(NilaiRataRata);
 
 try {
-  switch (test) {
-    case hitung >= 0 && hitung <= 59:
-      console.log(`Rata-rata = ${hitung}\nGrade = E`);
-      break;
-    case hitung >= 60 && hitung <= 69:
-      console.log(`Rata-rata = ${hitung}\nGrade = D`);
-      break;
-    case hitung >= 70 && hitung <= 79:
-      console.log(`Rata-rata = ${hitung}\nGrade = C`);
-      break;
-    // kondisi tidak apa jika tidak dalam scope apapun
-    case hitung >= 80 && hitung <= 89:
-      console.log(`Rata-rata = ${hitung}\nGrade = B`);
-      break;
-    case hitung >= 90 && hitung <= 100:
-      console.log(`Rata-rata = ${hitung}\nGrade = A`);
-      break;
-    default:
-      console.log('anda wajib mengulang');
-      break;
-  }
-} catch (error) {
-  console.log(`pastikan yang diinputkan adalah angka ${error}`);
+  if (mtk >= 500 || mtk <= 0 || bahasaIndonesia >= 500 || bahasaIndonesia <= 0 || bahasaInggris >= 500 || bahasaInggris <= 0 || ipa >= 500 || ipa <= 0) throw 'error';
+  if (typeof mtk !== 'number' || typeof bahasaIndonesia !== 'number' || typeof bahasaInggris !== 'number' || typeof ipa !== 'number') throw 'inputan harus berupa angka';
+  console.log(`Rata-Rata = ${NilaiRataRata}`);
+  console.log(`Grade = ${hasil}`);
+} catch (err) {
+  console.log(err);
 }
